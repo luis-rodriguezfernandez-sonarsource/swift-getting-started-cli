@@ -22,7 +22,7 @@ steps:
       organization: 'luis-rodriguezfernandez-sonarsource'
       scannerMode: 'cli'
       extraProperties: |
-        sonar.projectKey=swift-getting-started-cli
+        sonar.projectKey=luis-rodriguezfernandez-sonarsource_swift-getting-started-cli
         sonar.verbose=true
 
   - task: SonarCloudAnalyze@3
