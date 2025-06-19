@@ -23,6 +23,7 @@ steps:
       scannerMode: 'cli'
       extraProperties: |
         sonar.projectKey=swift-getting-started-cli
+        sonar.verbose=true
 
   - task: SonarCloudAnalyze@3
     inputs: {}
