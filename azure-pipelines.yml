@@ -1,0 +1,28 @@
+# Gradle
+# Build your Java project and run tests with Gradle using a Gradle wrapper script.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+    # Checkout the repository
+  - checkout: self
+    # Disable shallow fetch
+    fetchDepth: 0
+
+    # Prepare Analysis Configuration task
+  - task: SonarCloudPrepare@3
+    inputs:
+      SonarCloud: 'sonarcloud.io'
+      organization: 'luis-rodriguezfernandez-sonarsource'
+      scannerMode: 'cli'
+      extraProperties: |
+        sonar.projectKey=swift-getting-started-cli
+
+  - task: SonarCloudAnalyze@3
+    inputs: {}
