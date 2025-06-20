@@ -15,15 +15,30 @@ steps:
     # Disable shallow fetch
     fetchDepth: 0
 
+  - task: Bash@3
+    displayName: Download Build Wrapper
+    inputs:
+      targetType: inline
+      script: |
+        curl  'https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip' --output build-wrapper.zip
+        unzip build-wrapper.zip
+
     # Prepare Analysis Configuration task
   - task: SonarCloudPrepare@3
     inputs:
       SonarCloud: 'sonarcloud.io'
       organization: 'luis-rodriguezfernandez-sonarsource'
+      cliProjectKey: 'luis-rodriguezfernandez-sonarsource_swift-getting-started-cli'
       scannerMode: 'cli'
       extraProperties: |
-        sonar.projectKey=luis-rodriguezfernandez-sonarsource_swift-getting-started-cli
         sonar.verbose=true
+        sonar.cfamily.compile-commands=bw-output/compile_commands.json
+
+  - task: Bash@3
+    displayName: Bash Script
+    inputs:
+      targetType: inline
+      script: |
+        ./build-wrapper-linux-x86-64 --out-dir bw_output ./build.sh clean build
 
   - task: SonarCloudAnalyze@3
-    inputs: {}

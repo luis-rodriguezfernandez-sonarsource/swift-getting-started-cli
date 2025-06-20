@@ -2,3 +2,8 @@
 .build
 .swiftpm
 Package.resolved
+.scannerwork/
+build/
+bw_output/
+*.swp
+*.swo
