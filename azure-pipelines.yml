@@ -32,7 +32,7 @@ steps:
       extraProperties: |
         sonar.projectKey=luis-rodriguezfernandez-sonarsource_swift-getting-started-cli
         sonar.verbose=true
-        sonar.cfamily.compile-commands=bw-output/compile_commands.json
+        sonar.cfamily.compile-commands=bw_output/compile_commands.json
 
   - task: Bash@3
     displayName: Bash Script
