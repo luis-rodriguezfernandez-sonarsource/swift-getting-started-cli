@@ -39,6 +39,6 @@ steps:
     inputs:
       targetType: inline
       script: |
-        ./build-wrapper-linux-x86-64 --out-dir bw_output ./build.sh clean build
+        ./build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir bw_output ./build.sh clean build
 
   - task: SonarCloudAnalyze@3
